@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
 import java.io.Serializable;
@@ -34,13 +31,16 @@ public class CuerpoCeleste implements Serializable{
         diametro = 0 ;
     }
     
-    
     public CuerpoCeleste(short codigoCuerpo, String nombre, String tipoObjeto, int diametro) {
         this.codigoCuerpo = codigoCuerpo;
         this.nombre = nombre;
         this.tipoObjeto = tipoObjeto;
         this.diametro = diametro;
     }
+    
+    
+    // GETTERS & SETTERS
+    
 
     public int getDiametro() {
         return diametro;
@@ -78,6 +78,8 @@ public class CuerpoCeleste implements Serializable{
     public String toString() {
         return "CuerpoCeleste{" + "codigoCuerpo=" + codigoCuerpo + ", nombre=" + nombre + ", tipoObjeto=" + tipoObjeto + ", diametro=" + diametro + '}';
     }
+    
+    // MÉTODO TO STRING
     
     public static void main(String[] args) {
         CuerpoCeleste ejemplo = new CuerpoCeleste() ;
