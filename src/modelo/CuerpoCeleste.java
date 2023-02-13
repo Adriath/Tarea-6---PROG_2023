@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import programacuerposcelestes.excepciones.ExcepcionCuerpoCeleste;
 
 /**
  *
@@ -31,11 +32,12 @@ public class CuerpoCeleste implements Serializable{
         diametro = 0 ;
     }
     
-    public CuerpoCeleste(short codigoCuerpo, String nombre, String tipoObjeto, int diametro) {
-        this.codigoCuerpo = codigoCuerpo;
-        this.nombre = nombre;
+    public CuerpoCeleste(short codigoCuerpo, String nombre, String tipoObjeto, int diametro) throws ExcepcionCuerpoCeleste{
+        
+        this.setCodigoCuerpo(codigoCuerpo); // El código tiene que ser de tres dígitos como máximo.
+        this.setNombre(nombre); // El nombre puede tener 15 caracteres como máximo
         this.tipoObjeto = tipoObjeto;
-        this.diametro = diametro;
+        this.setDiametro(diametro); // El diámetro no puede ser superior a 6 dígitos.
     }
     
     
@@ -46,16 +48,32 @@ public class CuerpoCeleste implements Serializable{
         return diametro;
     }
 
-    public void setDiametro(int diametro) {
-        this.diametro = diametro;
+    public void setDiametro(int diametro) throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL DIÁMTRO NO SEA SUPERIOR A 6 DÍGITOS
+        
+        if ((diametro >= 0) && (diametro <= 999999) ) 
+        {
+            this.diametro = diametro;
+        }
+        else
+        {
+            throw new ExcepcionCuerpoCeleste("El diámetro no puede tener más de 6 dígitos. No son necesarias decimales.") ;
+        }
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL NOMBRE TENGA 15 CARACTERES COMO MÁXIMO
+        
+        if (nombre.length() <= 15) 
+        {
+            this.nombre = nombre;
+        }
+        else
+        {
+            throw new ExcepcionCuerpoCeleste("El nombre puede tener un máximo de 15 caracteres.") ;
+        }
     }
 
     public String getTipoObjeto() {
@@ -70,8 +88,18 @@ public class CuerpoCeleste implements Serializable{
         return codigoCuerpo;
     }
 
-    public void setCodigoCuerpo(short codigoCuerpo) {
-        this.codigoCuerpo = codigoCuerpo;
+    public void setCodigoCuerpo(short codigoCuerpo)throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL CÓDIGO SEA DE 3 DÍGITOS
+        
+        String NumeroString = String.valueOf(codigoCuerpo);
+        
+        if (NumeroString.length() <= 3) 
+        {
+            this.codigoCuerpo = codigoCuerpo;
+        }
+        else
+        {
+            throw new ExcepcionCuerpoCeleste ("El código tiene que ser de tres dígitos como máximo.");
+        }
     }
 
     @Override
