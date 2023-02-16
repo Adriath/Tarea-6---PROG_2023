@@ -2,6 +2,9 @@
 package utilidades;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import utilidades.excepciones_utilidades.ExcepcionDecisionUsuario;
@@ -58,11 +61,11 @@ public class Utilidades {
             }
             catch (InputMismatchException e) {
                 
-                System.out.println("No has introducido un número entero.");
+                System.out.println("\nNo has introducido un número entero.");
             }
             catch (Exception e) {
                 
-                System.out.println("No has introducido un número entero.");
+                System.out.println("\nNo has introducido un número entero.");
             }
         } while (!validador);
 
@@ -94,17 +97,125 @@ public class Utilidades {
             }
             catch (InputMismatchException e) {
                 
-                System.out.println("No has introducido un número válido.");
+                System.out.println("\nNo has introducido un número válido.");
             }
             catch (Exception e) {
                 
-                System.out.println("No has introducido un número válido.");
+                System.out.println("\nNo has introducido un número válido.");
             }
         } while (!validador);
 
      
         return numero ;
     }
+    
+    /**
+     * Método que crea un objeto de tipo BufferedReader para leer una cadena de 
+     * caracteres.
+     * 
+     * @param msg. Tipo String. Es el mensaje con el que se pide los datos al usuario/a.
+     * @return mensaje. String. Devuelve el mensaje introducido por el/la usuario/a.
+     */
+    public static String leerStringBuffer(String msg){
+    
+        String mensaje = "" ;
+        BufferedReader dato = new BufferedReader(new InputStreamReader(System.in)) ;
+        
+        System.out.println(msg);
+        
+        try
+        {
+        mensaje = dato.readLine() ;    
+        }
+        catch(IOException e){
+            System.out.println("\nError de entrada de datos.");
+        }
+        catch(Exception e){
+            System.out.println("\nHa ocurrido algún error.");
+        }
+        
+        return mensaje ;
+    }
+    
+    
+    /**
+     * Método que crea un objeto de tipo BufferedReader para leer un número entero
+     * introducido por el/la usuario/a.
+     * 
+     * @param msg. Tipo String. Mensaje con el que se pide el número al usuario/a.
+     * @return numero. Int. Devuelve el número introducido por el/la usuario/a.
+     */
+    public static int leerEnteroBuffer(String msg){
+    
+        int numero = 0 ;
+        boolean validador = false ;
+        
+        BufferedReader dato = new BufferedReader(new InputStreamReader(System.in)) ;
+        
+        System.out.println(msg);
+        
+            do 
+            {
+                try
+                {
+                numero = Integer.parseInt(dato.readLine()) ;
+                validador = true ;
+                }
+                catch (NumberFormatException e){
+                    System.out.println("\nTienes que introducir un número entero.");
+                }
+                catch(IOException e){
+                    System.out.println("\nError de entrada de datos.");
+                }
+                catch(Exception e){
+                    System.out.println("\nHa ocurrido algún error.");
+                }
+                
+            } while (!validador);
+        
+        return numero ;
+    }
+    
+    
+      
+    /**
+     * Método que crea un objeto de tipo BufferedReader para leer un número corto
+     * introducido por el/la usuario/a.
+     * 
+     * @param msg. Tipo String. Mensaje con el que se pide el número al usuario/a.
+     * @return numero. Short. Devuelve el número introducido por el/la usuario/a.
+     */
+    public static short leerShortBuffer(String msg){
+    
+        short numero = 0 ;
+        boolean validador = false ;
+        
+        BufferedReader dato = new BufferedReader(new InputStreamReader(System.in)) ;
+        
+        System.out.println(msg);
+        
+            do 
+            {
+                try
+                {
+                numero = Short.parseShort(dato.readLine()) ;
+                validador = true ;
+                }
+                catch (NumberFormatException e){
+                    System.out.println("\nTienes que introducir un número no demasiado largo.");
+                }
+                catch(IOException e){
+                    System.out.println("\nError de entrada de datos.");
+                }
+                catch(Exception e){
+                    System.out.println("\nHa ocurrido algún error.");
+                }
+                
+            } while (!validador);
+        
+        return numero ;
+    }
+    
     
     /**
      * Método que valida la respuesta del usuario respecto a si continuar la 
@@ -124,7 +235,7 @@ public class Utilidades {
         }
         else // ...de lo contrario no y saltará la excepción.
         {
-            throw new ExcepcionDecisionUsuario("Tienes que decir sí \"s/S\" o no \"n/N\".") ;
+            throw new ExcepcionDecisionUsuario("\nTienes que decir sí \"s/S\" o no \"n/N\".") ;
         }
         
         return valido ;
