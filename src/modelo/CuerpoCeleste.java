@@ -90,9 +90,7 @@ public class CuerpoCeleste implements Serializable{
 
     public void setCodigoCuerpo(short codigoCuerpo)throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL CÓDIGO SEA DE 3 DÍGITOS
         
-        String NumeroString = String.valueOf(codigoCuerpo);
-        
-        if (NumeroString.length() <= 3) 
+        if (codigoCuerpo >= 0 || codigoCuerpo <= 999) 
         {
             this.codigoCuerpo = codigoCuerpo;
         }
