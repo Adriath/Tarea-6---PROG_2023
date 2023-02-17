@@ -25,4 +25,18 @@ public class MetodosCuerpoCeleste {
         System.out.println("6. Borrar fichero de cuerpos celestes");
         System.out.println("7. Salir de la aplicación");
     }
+    
+    
+    public static boolean compruebaCodigoCuerpoCeleste(short codigo){ // COMPRUEBA SI EL CÓDIGO TIENE 3 DÍGITOS
+        
+        String codigoCadena ;
+        boolean valido = false ;
+        
+        if (codigo > 0 || codigo < 999) 
+        {
+            valido = true ;
+        }
+        
+        return valido ;
+    }
 }

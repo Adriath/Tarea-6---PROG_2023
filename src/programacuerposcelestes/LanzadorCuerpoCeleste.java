@@ -3,8 +3,10 @@ package programacuerposcelestes;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.CuerpoCeleste;
@@ -22,6 +24,22 @@ public class LanzadorCuerpoCeleste {
     private static File fichero = new File("sistemasolar.dat") ;
     private static List<CuerpoCeleste> cuerposCelestes = new ArrayList<>() ;
     
+
+// ------------------ MÉTODOS DEL MENÚ ------------------------------
+    
+    private static void aniadirCuerpoCeleste(){
+        
+        short codigoCuerpo ;
+        String nombre ;
+        String tipoObjeto ;
+        int diametro ;
+        
+        abrir() ;
+        
+        
+    }
+
+// ------------------   MÉTODOS DE APOYO -------------------------
     
     /**
      * Método que nos abre el fichero de datos para cargar su contenido en el array "cuerposCelestes".
@@ -70,6 +88,28 @@ public class LanzadorCuerpoCeleste {
         }
         catch (Exception e){
             System.out.println("\nError: " + e.getMessage());
+        }
+    }
+    
+    
+    /**
+     * Método que nos escribe el ArrayList en el fichero de disco. Es la manera 
+     * de guardar los datos serializados ya que la clase CuerpoCeleste lo está.
+     */
+    private static void escribirArchivo(){
+        
+        try
+        {
+            if (!fichero.exists())
+                fichero = new File("sistemasolar.dat");
+            FileOutputStream fos = new FileOutputStream(fichero) ;
+            ObjectOutputStream oos = new ObjectOutputStream(fos) ;
+            oos.writeObject(cuerposCelestes);
+            oos.close();
+            fos.close();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }
