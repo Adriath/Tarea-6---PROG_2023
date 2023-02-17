@@ -31,7 +31,7 @@ public class MetodosCuerpoCeleste {
         
         boolean valido = false ;
         
-        if (codigo >= 0 || codigo <= 999) // Si el código es positivo y tiene 3 dígitos como máximo será válido
+        if (codigo >= 0 && codigo <= 999) // Si el código es positivo y tiene 3 dígitos como máximo será válido
             valido = true ;        
         
         return valido ;
@@ -51,7 +51,7 @@ public class MetodosCuerpoCeleste {
         
         boolean valido = false ;
         
-        if (diametro >= 0 || diametro <= 999999) // Si el diámetro es positivo y tiene 6 dígitos como máximo será válido
+        if (diametro >= 0 && diametro <= 999999) // Si el diámetro es positivo y tiene 6 dígitos como máximo será válido
             valido = true ;
         
         return valido ;

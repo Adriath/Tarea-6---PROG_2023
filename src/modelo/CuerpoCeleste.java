@@ -100,17 +100,11 @@ public class CuerpoCeleste implements Serializable{
         }
     }
 
+    // MÉTODO TO STRING
+    
     @Override
     public String toString() {
         return "CuerpoCeleste{" + "codigoCuerpo=" + codigoCuerpo + ", nombre=" + nombre + ", tipoObjeto=" + tipoObjeto + ", diametro=" + diametro + '}';
-    }
-    
-    // MÉTODO TO STRING
-    
-    public static void main(String[] args) {
-        CuerpoCeleste ejemplo = new CuerpoCeleste() ;
-        
-        System.out.println(ejemplo.toString());
     }
     
 }
