@@ -21,6 +21,10 @@ public class Utilidades {
         UNIDAD 6: almacenando datos.
     */
     
+    // ------------------- ENTRADA DE DATOS -----------------------------
+    
+    // ------- CLASE SCANNER ------------
+    
      /**
      * Método que pide al usuario una cadena de caracteres pudiendo personalizar 
      * el mensaje de petición.
@@ -63,9 +67,13 @@ public class Utilidades {
                 
                 System.out.println("\nNo has introducido un número entero.");
             }
-            catch (Exception e) {
+            catch (NumberFormatException e) {
                 
                 System.out.println("\nNo has introducido un número entero.");
+            }
+            catch (Exception e) {
+                
+                System.out.println("\nOcurrió algún error.");
             }
         } while (!validador);
 
@@ -99,15 +107,22 @@ public class Utilidades {
                 
                 System.out.println("\nNo has introducido un número válido.");
             }
-            catch (Exception e) {
+            catch (NumberFormatException e) {
                 
                 System.out.println("\nNo has introducido un número válido.");
+            }
+            catch (Exception e) {
+                
+                System.out.println("\nOcurrió algún error.");
             }
         } while (!validador);
 
      
         return numero ;
     }
+    
+    
+    // ------- CLASE BUFFEREDREADER --------
     
     /**
      * Método que crea un objeto de tipo BufferedReader para leer una cadena de 
@@ -214,8 +229,10 @@ public class Utilidades {
             } while (!validador);
         
         return numero ;
-    }
+    }    
     
+    
+// ---------------------- VALIDACIONES -------------------------
     
     /**
      * Método que valida la respuesta del usuario respecto a si continuar la 
@@ -223,6 +240,7 @@ public class Utilidades {
      * 
      * @param msj String. Mensaje introducido por el usuario.
      * @return boolean valido. Devuelve si es válida la respuesta (true) o no (false).
+     * @throws utilidades.excepciones_utilidades.ExcepcionDecisionUsuario
      */
     public static boolean compruebaDecisionUsuario(String msj)throws ExcepcionDecisionUsuario{
         String si = "s" ;
@@ -298,6 +316,9 @@ public class Utilidades {
         
         return validador ;
     }
+    
+    
+    // -------------------- OPERACIONES ----------------------
     
     /**
      * Método que calcula un número aleatorio entre 1 y 3.
