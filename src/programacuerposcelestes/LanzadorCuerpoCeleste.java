@@ -124,6 +124,13 @@ public class LanzadorCuerpoCeleste {
             }
         }
     }
+    
+    
+    private static void buscarCuerpoCeleste(){
+        
+        
+    }
+    
 
 // ------------------   MÉTODOS DE APOYO -------------------------
     
@@ -198,6 +205,7 @@ public class LanzadorCuerpoCeleste {
             System.out.println(e.getMessage());
         }
     }
+    
     
     public static void main(String[] args) {
 //        aniadirCuerpoCeleste();
