@@ -91,6 +91,39 @@ public class LanzadorCuerpoCeleste {
         escribirArchivo();
         System.out.println("\nCuerpo Celeste " + cuerposCelestes.size()+ " añadido");
     }
+    
+    
+    /**
+     * Método que nos permite visualizar todos los datos almacenador.
+     * Primero comprobamos que el fichero exista.
+     * Si existe, lo abrimos y comprobamos que no esté vacío recorriendo todo su contenido.
+     */
+    private static void listarCuerpoCeleste(){
+        
+        if (!fichero.exists()) 
+        {
+            System.out.println("\nNO EXISTEN DATOS");
+        }
+        else
+        {
+            abrir() ;
+            
+            if (cuerposCelestes != null) 
+            {
+                int contador = 1 ;
+                
+                for (CuerpoCeleste objeto: cuerposCelestes) 
+                {
+                    System.out.println("Registro nº " + contador + " - "  + objeto.toString());
+                    contador++ ;
+                }
+            }
+            else
+            {
+                System.out.println("\nNo existen registros de cuerpos celestes.");
+            }
+        }
+    }
 
 // ------------------   MÉTODOS DE APOYO -------------------------
     
@@ -167,6 +200,7 @@ public class LanzadorCuerpoCeleste {
     }
     
     public static void main(String[] args) {
-        aniadirCuerpoCeleste();
+//        aniadirCuerpoCeleste();
+            listarCuerpoCeleste();
     }
 }
