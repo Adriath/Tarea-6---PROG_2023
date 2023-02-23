@@ -285,21 +285,22 @@ public class Utilidades {
     }
     
     /**
-     * Método que unifica los métodos compruebaDecisionUsuario() y distingueEntreSiYNo().
-     * Preguntará al usuario/a si quieres salir. Si la respuesta es válida la almacenará y evaluará.
+     * Método que unifica los métodos compruebaDecisionUsuario() y distingueEntreSiYNo().Hará una pregunta al usuaria/a según se indique en el parámetro pregunta. 
+     * Si la respuesta es válida la almacenará y evaluará.
      * 
+     * @param pregunta Tipo String. Es la pregunta que se hace al uusario/a para que decida. Irá siempre seguida de "(s/n)".
      * @return boolean validador. Devuelve la decision del usuario/a según seá sí o no.
      * @see Utilidades.compruebaDecisionUsuario()
      * @see Utilidades.distingueEntreSiYNo()
      */
-    public static boolean secuenciaSalida(){
+    public static boolean secuenciaSalida(String pregunta){
         
         String decision ;
         boolean validador = false ;
         
         do // Ejecuta hasta que la decisión del usuario/a sea válida.
             {                
-                decision = Utilidades.leerString("\n¿Quieres salir del programa? (s/n)\n") ; // Pregunta al usuario/a si quiere continuar.
+                decision = Utilidades.leerString("\n" + pregunta + "(s/n)\n") ; // Pregunta al usuario/a si quiere continuar.
             
                 try 
                 {
