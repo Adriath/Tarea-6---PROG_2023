@@ -197,6 +197,47 @@ public class LanzadorCuerpoCeleste {
         } while (!Utilidades.secuenciaSalida("¿Quieres buscar otro registro?"));
     }
     
+    
+    private static void eliminarCuerpoCeleste(){
+        
+        int contador ;
+        boolean encontrado = false ;
+        
+        do 
+        {
+            short codigo = Utilidades.leerShortBuffer("\nIntroduce el código del cuerpo celeste que deseas eliminar: ") ;
+        
+            abrir() ;
+
+            contador = 0 ;
+
+            for(CuerpoCeleste cuerpoCeleste: cuerposCelestes)
+            {
+                if (cuerpoCeleste.getCodigoCuerpo() == codigo)
+                {
+                    encontrado = true ;
+                    System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
+                    
+                    if (!Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
+                    {
+                        cuerposCelestes.remove(contador) ;
+                        escribirArchivo() ;
+                        System.out.printf("\nREGISTRO Nº%d ELIMINADO", contador);
+                    }
+                }
+                
+                contador++ ;
+            }
+            
+            if (!encontrado) 
+            {
+                System.out.println("\nREGISTRO NO ENCONTRADO.") ;
+            }
+            
+            
+        } while (!Utilidades.secuenciaSalida("\n¿Quieres buscar otro registro?"));
+    }
+    
 
 // ------------------   MÉTODOS DE APOYO -------------------------
     
@@ -267,6 +308,9 @@ public class LanzadorCuerpoCeleste {
             oos.close();
             fos.close();
         }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
         catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -274,9 +318,11 @@ public class LanzadorCuerpoCeleste {
     
     
     public static void main(String[] args) {
-//        aniadirCuerpoCeleste();
-            listarCuerpoCeleste();
-            buscarCuerpoCelestePorCodigo();
-            buscarCuerpoCelestePorTipo();
+        aniadirCuerpoCeleste();
+        listarCuerpoCeleste();
+//        buscarCuerpoCelestePorCodigo();
+//        buscarCuerpoCelestePorTipo();
+        eliminarCuerpoCeleste();
+        listarCuerpoCeleste();
     }
 }
