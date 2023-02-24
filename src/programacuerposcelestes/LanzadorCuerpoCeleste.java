@@ -126,6 +126,9 @@ public class LanzadorCuerpoCeleste {
     }
     
     
+    /**
+     * Método que nos permite buscar un registro concreto buscándolo por su código.
+     */
     private static void buscarCuerpoCelestePorCodigo(){
         
         int contador ;
@@ -153,6 +156,42 @@ public class LanzadorCuerpoCeleste {
             if (!encontrado) 
             {
                 System.out.println("\nREGISTRO NO ENCONTRADO.");
+            }
+            
+        } while (!Utilidades.secuenciaSalida("¿Quieres buscar otro registro?"));
+    }
+    
+    
+    /**
+     * Método que nos permite buscar un registro concreto buscándolo por su tipo.
+     */
+    private static void buscarCuerpoCelestePorTipo(){
+        
+        int contador ;
+        boolean encontrado = false ;
+        
+        do
+        {
+            String tipo = Utilidades.leerStringBuffer("\nIntroduce el código del cuerpo celeste que deseas buscar: ") ;
+        
+            abrir() ;
+            
+            contador = 0 ;
+
+            for (CuerpoCeleste cuerpoCeleste: cuerposCelestes) 
+            {
+                if (cuerpoCeleste.getTipoObjeto().equalsIgnoreCase(tipo)) 
+                {
+                    encontrado = true ;
+                    System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
+                }
+                
+                contador++ ;
+            }
+            
+            if (!encontrado) 
+            {
+                System.out.println("\nNO EXISTEN CUERPOS CELESTES DE ESE TIPO.");
             }
             
         } while (!Utilidades.secuenciaSalida("¿Quieres buscar otro registro?"));
@@ -238,5 +277,6 @@ public class LanzadorCuerpoCeleste {
 //        aniadirCuerpoCeleste();
             listarCuerpoCeleste();
             buscarCuerpoCelestePorCodigo();
+            buscarCuerpoCelestePorTipo();
     }
 }
