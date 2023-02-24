@@ -128,26 +128,31 @@ public class LanzadorCuerpoCeleste {
     
     private static void buscarCuerpoCelestePorCodigo(){
         
-        int contador = 0 ;
+        int contador ;
+        boolean encontrado = false ;
         
         do
         {
-            short codigo = Utilidades.leerShortBuffer("Introduce el código del cuerpo celeste que deseas buscar: ") ;
+            short codigo = Utilidades.leerShortBuffer("\nIntroduce el código del cuerpo celeste que deseas buscar: ") ;
         
             abrir() ;
+            
+            contador = 0 ;
 
             for (CuerpoCeleste cuerpoCeleste: cuerposCelestes) 
             {
                 if (cuerpoCeleste.getCodigoCuerpo() == codigo) 
                 {
-                    System.out.println("Registro nº" + contador + " - " + cuerpoCeleste.toString());
-                    contador++ ;
-                }
-                else
-                {
-                    System.out.println("\nREGISTRO NO ENCONTRADO");
+                    encontrado = true ;
+                    System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
                 }
                 
+                contador++ ;
+            }
+            
+            if (!encontrado) 
+            {
+                System.out.println("\nREGISTRO NO ENCONTRADO.");
             }
             
         } while (!Utilidades.secuenciaSalida("¿Quieres buscar otro registro?"));
