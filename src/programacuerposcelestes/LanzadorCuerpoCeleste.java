@@ -140,7 +140,7 @@ public class LanzadorCuerpoCeleste {
         
             abrir() ;
             
-            contador = 0 ;
+            contador = 1 ;
 
             for (CuerpoCeleste cuerpoCeleste: cuerposCelestes) 
             {
@@ -176,7 +176,7 @@ public class LanzadorCuerpoCeleste {
         
             abrir() ;
             
-            contador = 0 ;
+            contador = 1 ;
 
             for (CuerpoCeleste cuerpoCeleste: cuerposCelestes) 
             {
@@ -198,7 +198,7 @@ public class LanzadorCuerpoCeleste {
     }
     
     
-    private static void eliminarCuerpoCeleste(){
+    private static void eliminarCuerpoCeleste(){ // NO FUNCIONA CORRECTAMENTE, VOY A SEGUIR Y LUEGO LO ATIENDO
         
         int contador ;
         boolean encontrado = false ;
@@ -209,7 +209,7 @@ public class LanzadorCuerpoCeleste {
         
             abrir() ;
 
-            contador = 0 ;
+            contador = 1 ;
 
             for(CuerpoCeleste cuerpoCeleste: cuerposCelestes)
             {
@@ -217,13 +217,12 @@ public class LanzadorCuerpoCeleste {
                 {
                     encontrado = true ;
                     System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
-                    
-                    if (!Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
-                    {
-                        cuerposCelestes.remove(contador) ;
-                        escribirArchivo() ;
-                        System.out.printf("\nREGISTRO Nº%d ELIMINADO", contador);
-                    }
+                }
+                if (encontrado & !Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
+                {
+                    cuerposCelestes.remove(contador) ;
+                    escribirArchivo() ;
+                    System.out.printf("\nREGISTRO Nº%d ELIMINADO", contador);
                 }
                 
                 contador++ ;
@@ -318,7 +317,7 @@ public class LanzadorCuerpoCeleste {
     
     
     public static void main(String[] args) {
-        aniadirCuerpoCeleste();
+//        aniadirCuerpoCeleste();
         listarCuerpoCeleste();
 //        buscarCuerpoCelestePorCodigo();
 //        buscarCuerpoCelestePorTipo();
