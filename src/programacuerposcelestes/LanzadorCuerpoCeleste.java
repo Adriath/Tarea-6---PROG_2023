@@ -198,6 +198,11 @@ public class LanzadorCuerpoCeleste {
     }
     
     
+    /**
+     * Método similar al anterior pero que en lugar de limitarse a mostrarnos el 
+     * resultado de la búsqueda, nos permite decidir si deseamos elminar el 
+     * registro encontrado.
+     */
     private static void eliminarCuerpoCeleste(){ // NO FUNCIONA CORRECTAMENTE, VOY A SEGUIR Y LUEGO LO ATIENDO
         
         int contador ;
@@ -209,7 +214,7 @@ public class LanzadorCuerpoCeleste {
         
             abrir() ;
 
-            contador = 1 ;
+            contador = 0 ;
 
             for(CuerpoCeleste cuerpoCeleste: cuerposCelestes)
             {
@@ -218,7 +223,7 @@ public class LanzadorCuerpoCeleste {
                     encontrado = true ;
                     System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
                 }
-                if (encontrado & !Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
+                if (!Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
                 {
                     cuerposCelestes.remove(contador) ;
                     escribirArchivo() ;
@@ -237,6 +242,16 @@ public class LanzadorCuerpoCeleste {
         } while (!Utilidades.secuenciaSalida("\n¿Quieres buscar otro registro?"));
     }
     
+    
+    private static void eliminarFichero(){
+        
+        boolean borrado = false ;
+        
+        try
+        {
+            System.out.println("\n¿Está seguro de que desea elminar el fichero? (S/N)") ;
+        }
+    }
 
 // ------------------   MÉTODOS DE APOYO -------------------------
     
@@ -322,6 +337,6 @@ public class LanzadorCuerpoCeleste {
 //        buscarCuerpoCelestePorCodigo();
 //        buscarCuerpoCelestePorTipo();
         eliminarCuerpoCeleste();
-        listarCuerpoCeleste();
+//        listarCuerpoCeleste();
     }
 }
