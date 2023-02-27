@@ -3,6 +3,7 @@ package programacuerposcelestes;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -205,6 +206,12 @@ public class LanzadorCuerpoCeleste {
      */
     private static void eliminarCuerpoCeleste(){ // NO FUNCIONA CORRECTAMENTE, VOY A SEGUIR Y LUEGO LO ATIENDO
         
+        /*
+        Uno de los errores es que elmina una entrada. Poniendo 1 como código, por ejemplo, 
+        ha dado un error pero ha borrado la entrada 1 del fichero. Eso no debería ocurrir porque 
+        el código no coincide con 1.
+        */
+        
         int contador ;
         boolean encontrado = false ;
         
@@ -243,13 +250,35 @@ public class LanzadorCuerpoCeleste {
     }
     
     
+    /**
+     * Método que nos elimina el fichero de datos del disco.
+     */
     private static void eliminarFichero(){
         
+        boolean respuesta = false ;
         boolean borrado = false ;
         
         try
         {
-            System.out.println("\n¿Está seguro de que desea elminar el fichero? (S/N)") ;
+            respuesta = Utilidades.secuenciaSalida("\n¿Desea eliminar el fichero completo?") ;
+            
+            if (!respuesta)
+            {
+                borrado = fichero.delete() ;
+                
+                if (borrado) 
+                {
+                    System.out.println("\nFICHERO DE DATOS ELMINADO.");
+                    cuerposCelestes.clear();
+                }
+            }
+            else
+            {
+                System.out.println("\nNO SE HA REALIZADO NINGUNA ACCIÓN.");
+            }
+        }
+        catch (Exception e){
+            System.err.println("\nAlgún error ocurrió: " + e.getMessage());
         }
     }
 
@@ -333,10 +362,12 @@ public class LanzadorCuerpoCeleste {
     
     public static void main(String[] args) {
 //        aniadirCuerpoCeleste();
-        listarCuerpoCeleste();
+//        listarCuerpoCeleste();
 //        buscarCuerpoCelestePorCodigo();
 //        buscarCuerpoCelestePorTipo();
-        eliminarCuerpoCeleste();
+//        eliminarCuerpoCeleste();
+//        listarCuerpoCeleste();
+//        eliminarFichero();
 //        listarCuerpoCeleste();
     }
 }
