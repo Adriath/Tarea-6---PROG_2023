@@ -3,7 +3,6 @@ package programacuerposcelestes;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,6 +27,63 @@ public class LanzadorCuerpoCeleste {
     private static List<CuerpoCeleste> cuerposCelestes = new ArrayList<>() ;
     
 
+    // ------------------------------------------------------------
+    // -------------------- MÉTODO MAIN ---------------------------
+    // ------------------------------------------------------------
+    
+    
+    public static void main(String[] args) {
+        
+        int opcion ;
+        boolean salir = false ;
+        
+        System.out.println("MENSAJE DE BIENVENIDA\n");
+        
+        do 
+        {
+            MetodosCuerpoCeleste.mostrarMenu();
+                
+            opcion = Utilidades.leerEnteroBuffer("\nElige una cpción: ") ;
+
+            switch(opcion)
+            {
+                case 1: // AÑADIR REGISTRO
+                    aniadirCuerpoCeleste() ;
+                    break ;
+
+                case 2: // LISTAR REGISTROS
+                    listarCuerpoCeleste() ;
+                    break ;
+
+                case 3: // BUSCAR REGISTRO POR CÓDIGO
+                    buscarCuerpoCelestePorCodigo() ;
+                    break ;
+
+                case 4: // BUSCAR REGSITRO POR TIPO
+                    buscarCuerpoCelestePorTipo() ;
+                    break ;
+
+                case 5: // ELIMINAR REGISTRO
+                    eliminarCuerpoCeleste() ;
+                    break ;
+
+                case 6: // ELIMINAR FICHERO COMPLETO
+                    eliminarFichero() ;
+                    break ;
+                    
+                case 7: // SALIR
+                    salir = Utilidades.secuenciaSalida("\n¿Quieres salir del programa?") ;
+
+                default:
+                    System.out.println("\nDebes elegir una opción válida (1-7).");
+            }
+            
+        } while (salir);
+        
+        System.out.println("\nMENSAJE DE DESPEDIDA");
+    }
+    
+    
 // ------------------ MÉTODOS DEL MENÚ ------------------------------
     
     private static void aniadirCuerpoCeleste(){
@@ -358,16 +414,5 @@ public class LanzadorCuerpoCeleste {
             System.out.println(e.getMessage());
         }
     }
-    
-    
-    public static void main(String[] args) {
-//        aniadirCuerpoCeleste();
-//        listarCuerpoCeleste();
-//        buscarCuerpoCelestePorCodigo();
-//        buscarCuerpoCelestePorTipo();
-//        eliminarCuerpoCeleste();
-//        listarCuerpoCeleste();
-//        eliminarFichero();
-//        listarCuerpoCeleste();
-    }
+ 
 }
