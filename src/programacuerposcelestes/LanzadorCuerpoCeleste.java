@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import modelo.CuerpoCeleste;
 import programacuerposcelestes.excepciones.ExcepcionCuerpoCeleste;
@@ -72,13 +73,13 @@ public class LanzadorCuerpoCeleste {
                     break ;
                     
                 case 7: // SALIR
-                    salir = Utilidades.secuenciaSalida("\n¿Quieres salir del programa?") ;
+                    salir = !Utilidades.secuenciaSalida("\n¿Quieres salir del programa?") ;
 
                 default:
                     System.out.println("\nDebes elegir una opción válida (1-7).");
             }
             
-        } while (salir);
+        } while (!salir);
         
         System.out.println("\nMENSAJE DE DESPEDIDA");
     }
@@ -269,40 +270,51 @@ public class LanzadorCuerpoCeleste {
         */
         
         int contador ;
-        boolean encontrado = false ;
+        boolean encontrado ;
         
-        do 
+        try
         {
-            short codigo = Utilidades.leerShortBuffer("\nIntroduce el código del cuerpo celeste que deseas eliminar: ") ;
+            do 
+            {
+                short codigo = Utilidades.leerShortBuffer("\nIntroduce el código del cuerpo celeste que deseas eliminar: ") ;
         
-            abrir() ;
+                abrir() ;
 
-            contador = 0 ;
-
-            for(CuerpoCeleste cuerpoCeleste: cuerposCelestes)
-            {
-                if (cuerpoCeleste.getCodigoCuerpo() == codigo)
-                {
-                    encontrado = true ;
-                    System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
-                }
-                if (!Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
-                {
-                    cuerposCelestes.remove(contador) ;
-                    escribirArchivo() ;
-                    System.out.printf("\nREGISTRO Nº%d ELIMINADO", contador);
-                }
+                contador = 1 ;
                 
+                encontrado = false ;
+
+                for(CuerpoCeleste cuerpoCeleste: cuerposCelestes)
+                {
+                    if (cuerpoCeleste.getCodigoCuerpo() == codigo)
+                    {
+                        encontrado = true ;
+                        System.out.println("\nRegistro nº" + contador + " - " + cuerpoCeleste.toString());
+                        
+                        if (!Utilidades.secuenciaSalida("¿Quiere eliminar este registro?")) 
+                        {
+                            cuerposCelestes.remove((contador - 1)) ;
+                            escribirArchivo() ;
+                            System.out.printf("\nREGISTRO Nº%d ELIMINADO", contador);
+                        }
+                    }
+                    
                 contador++ ;
-            }
+                }
             
-            if (!encontrado) 
-            {
-                System.out.println("\nREGISTRO NO ENCONTRADO.") ;
-            }
+                if (!encontrado) 
+                {   
+                    System.out.println("\nREGISTRO NO ENCONTRADO.") ;
+                }
             
-            
-        } while (!Utilidades.secuenciaSalida("\n¿Quieres buscar otro registro?"));
+            } while (!Utilidades.secuenciaSalida("\n¿Quieres buscar otro registro?"));
+        }
+        catch(ConcurrentModificationException e){
+            System.err.println("");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     
     
@@ -311,8 +323,8 @@ public class LanzadorCuerpoCeleste {
      */
     private static void eliminarFichero(){
         
-        boolean respuesta = false ;
-        boolean borrado = false ;
+        boolean respuesta ;
+        boolean borrado ;
         
         try
         {

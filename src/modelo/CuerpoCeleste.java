@@ -104,7 +104,7 @@ public class CuerpoCeleste implements Serializable{
     
     @Override
     public String toString() {
-        return "CuerpoCeleste{" + "codigoCuerpo = " + codigoCuerpo + ", nombre = " + nombre + ", tipoObjeto = " + tipoObjeto + ", diametro = " + diametro + '}';
+        return "CÓDIGO = " + codigoCuerpo + "  \tNOMBRE = " + nombre + "    " + " \t\tTIPO = " + tipoObjeto + "  \tDIÁMETRO = " + diametro ;
     }
     
 }
