@@ -2,8 +2,10 @@
 package programacuerposcelestes;
 
 /**
- *
+ * Clase que alberga métodos que complementan al lanzador de CuerpoCeleste.
+ * 
  * @author Adrián Arjona
+ * @version 1.0 Febrero 2023
  */
 public class MetodosCuerpoCeleste {
     
@@ -11,7 +13,11 @@ public class MetodosCuerpoCeleste {
     UNIDAD 6: almacenando datos.
     */
     
-    public static void mostrarMenu(){ // MUESTRA MENÚ DE LA APLICACIÓN
+    
+    /**
+     * Método que muestra el menú de la aplicación
+     */
+    public static void mostrarMenu(){
         
         System.out.println("\n----------------------");
         System.out.println("-------- MENÚ --------");
@@ -27,7 +33,13 @@ public class MetodosCuerpoCeleste {
     }
     
     
-    public static boolean compruebaCodigo(short codigo){ // COMPRUEBA SI EL CÓDIGO TIENE 3 DÍGITOS
+    /**
+     * Método que comprueba si el código del cuerpo celeste tiene 3 dígitos.
+     * 
+     * @param codigo Código del cuerpo celeste.
+     * @return Devuelve true si es válido, false si no.
+     */
+    public static boolean compruebaCodigo(short codigo){
         
         boolean valido = false ;
         
@@ -37,7 +49,14 @@ public class MetodosCuerpoCeleste {
         return valido ;
     }
     
-    public static boolean compruebaNombre(String nombre){ // CPMPRUEBA SI EL NOMBRE TIENE COMO MÁXIMO 15 CARACTERES
+    
+    /**
+     * Método que comprueba si el nombre del cuerpo celeste tiene como máximo 15 caracteres.
+     * 
+     * @param nombre Nombre del cuerpo celeste.
+     * @return Devuelve true si es válido, false si no.
+     */
+    public static boolean compruebaNombre(String nombre){
         
         boolean valido = false ;
         
@@ -47,6 +66,13 @@ public class MetodosCuerpoCeleste {
         return valido ;
     }
     
+    
+    /**
+     * Método que comprueba si el diámetro tiene 6 dígitos como máximo.
+     * 
+     * @param diametro Diámetro del cuerpo celeste.
+     * @return Devuelve true si es válido, false si no.
+     */
     public static boolean compruebaDiametro(int diametro){
         
         boolean valido = false ;

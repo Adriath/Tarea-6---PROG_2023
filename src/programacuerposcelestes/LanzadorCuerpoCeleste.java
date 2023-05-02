@@ -15,8 +15,10 @@ import programacuerposcelestes.excepciones.ExcepcionCuerpoCeleste;
 import utilidades.Utilidades;
 
 /**
- *
+ * Lanzador de la clase CuerpoCeleste. Contiene el main para su ejecución.
+ * 
  * @author Adrián Arjona
+ * @version 1.0 Febrero 2023
  */
 public class LanzadorCuerpoCeleste {
     
@@ -33,6 +35,11 @@ public class LanzadorCuerpoCeleste {
     // ------------------------------------------------------------
     
     
+    /**
+     * Método main para CuerpoCeleste.
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         
         int opcion ;
@@ -87,6 +94,10 @@ public class LanzadorCuerpoCeleste {
     
 // ------------------ MÉTODOS DEL MENÚ ------------------------------
     
+    
+    /**
+     * Método privado que añade cuerpos celestes.
+     */
     private static void aniadirCuerpoCeleste(){
         
         short codigoCuerpo ;

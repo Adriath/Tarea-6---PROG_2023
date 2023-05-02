@@ -5,7 +5,8 @@ import java.io.Serializable;
 import programacuerposcelestes.excepciones.ExcepcionCuerpoCeleste;
 
 /**
- *
+ * Clase serializada que define los cuerpos celestes.
+ * 
  * @author Adrián Arjona
  * @version 1.0 Febrero 2023
  */
@@ -25,6 +26,9 @@ public class CuerpoCeleste implements Serializable{
     
     // CONSTRUCTORES
     
+    /**
+     * Constructor por defecto de la clase CuerpoCeleste.
+     */
     public CuerpoCeleste() {
         codigoCuerpo = 0 ;
         nombre = "" ;
@@ -32,6 +36,17 @@ public class CuerpoCeleste implements Serializable{
         diametro = 0 ;
     }
     
+    
+    /**
+     * Constructor con parámetros de la clase CuerpoCeleste.
+     * 
+     * @param codigoCuerpo Código del cuerpo celeste.
+     * @param nombre Nombre del cuerpo celeste.
+     * @param tipoObjeto Tipo de objeto.
+     * @param diametro Diámetro del cuerpo celeste.
+     * 
+     * @throws ExcepcionCuerpoCeleste Excepción del cuerpo celeste.
+     */
     public CuerpoCeleste(short codigoCuerpo, String nombre, String tipoObjeto, int diametro) throws ExcepcionCuerpoCeleste{
         
         this.setCodigoCuerpo(codigoCuerpo); // El código tiene que ser de tres dígitos como máximo.
@@ -44,11 +59,24 @@ public class CuerpoCeleste implements Serializable{
     // GETTERS & SETTERS
     
 
+    /**
+     * Método que devuelve el diámetro del cuerpo celeste.
+     * 
+     * @return Diámetro del cuerpo celeste.
+     */
     public int getDiametro() {
         return diametro;
     }
 
-    public void setDiametro(int diametro) throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL DIÁMTRO NO SEA SUPERIOR A 6 DÍGITOS
+    
+    /**
+     * Método que modifica y controla el diámetro del cuerpo celeste no sea superior a 6 dígitos.
+     * 
+     * @param diametro Diámetro del cuerpo celeste.
+     * 
+     * @throws ExcepcionCuerpoCeleste Excepción del cuerpo celeste.
+     */
+    public void setDiametro(int diametro) throws ExcepcionCuerpoCeleste{
         
         if ((diametro >= 0) && (diametro <= 999999) ) 
         {
@@ -60,11 +88,25 @@ public class CuerpoCeleste implements Serializable{
         }
     }
 
+    
+    /**
+     * Método que dvuelve el nombre del cuerpo celeste.
+     * 
+     * @return Nombre del cuerpo celeste.
+     */
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL NOMBRE TENGA 15 CARACTERES COMO MÁXIMO
+    
+    /**
+     * Método que modifica y controla que el nombre del cuerpo celeste tenga 15 caracteres como máximo.
+     * 
+     * @param nombre Nombre del cuerpo celeste.
+     * 
+     * @throws ExcepcionCuerpoCeleste Excepción del cuerpo celeste.
+     */
+    public void setNombre(String nombre) throws ExcepcionCuerpoCeleste{
         
         if (nombre.length() <= 15) 
         {
@@ -76,19 +118,45 @@ public class CuerpoCeleste implements Serializable{
         }
     }
 
+    
+    /**
+     * Método que devuelve el tipo de objeto.
+     * 
+     * @return Devuelve el tipo de objeto.
+     */
     public String getTipoObjeto() {
         return tipoObjeto;
     }
 
+    
+    /**
+     * Método que modifica el tipo de objeto.
+     * 
+     * @param tipoObjeto El tipo de objeto.
+     */
     public void setTipoObjeto(String tipoObjeto) {
         this.tipoObjeto = tipoObjeto;
     }
 
+    
+    /**
+     * Método que devuelve el código del cuerpo celeste.
+     * 
+     * @return Código del cuerpo celeste.
+     */
     public short getCodigoCuerpo() {
         return codigoCuerpo;
     }
 
-    public void setCodigoCuerpo(short codigoCuerpo)throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL CÓDIGO SEA DE 3 DÍGITOS
+    
+    /**
+     * Método que modifica el código del cuerpo celeste y controla que sea de 3 dígitos.
+     * 
+     * @param codigoCuerpo Código del cuerpo celeste.
+     * 
+     * @throws ExcepcionCuerpoCeleste Excepción del cuerpo celeste.
+     */
+    public void setCodigoCuerpo(short codigoCuerpo) throws ExcepcionCuerpoCeleste{ // CONTROLA QUE EL CÓDIGO SEA DE 3 DÍGITOS
         
         if (codigoCuerpo >= 0 && codigoCuerpo <= 999) 
         {
@@ -102,6 +170,11 @@ public class CuerpoCeleste implements Serializable{
 
     // MÉTODO TO STRING
     
+    /**
+     * Método toString de Cuerpo Celeste.
+     * 
+     * @return Devuelve los valores del cuerpo celeste.
+     */
     @Override
     public String toString() {
         return "CÓDIGO = " + codigoCuerpo + "  \tNOMBRE = " + nombre + "    " + " \t\tTIPO = " + tipoObjeto + "  \tDIÁMETRO = " + diametro ;
