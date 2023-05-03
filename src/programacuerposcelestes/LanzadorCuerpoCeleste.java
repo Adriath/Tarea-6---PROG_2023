@@ -46,7 +46,7 @@ public class LanzadorCuerpoCeleste {
         boolean salir = false ;
         
         System.out.println("----------------------");
-        System.out.println("----¡BIENVENIDO/A!----");
+        System.out.println("    ¡BIENVENIDO/A!    ");
         System.out.println("----------------------\n");
         
         do 
