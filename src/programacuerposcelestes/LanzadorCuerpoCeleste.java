@@ -83,14 +83,16 @@ public class LanzadorCuerpoCeleste {
                     
                 case 7: // SALIR
                     salir = !Utilidades.secuenciaSalida("\n¿Quieres salir del programa?") ;
+                    break ;
 
                 default:
                     System.out.println("\nDebes elegir una opción válida (1-7).");
+                    break ;
             }
             
         } while (!salir);
         
-        System.out.println("\n --------- ¡GRACIAS POR UTILIZAR EL PROGRAMA! ----------");
+        System.out.println("\n --------- ¡GRACIAS POR UTILIZAR EL PROGRAMA! ----------\n");
     }
     
     
