@@ -45,7 +45,9 @@ public class LanzadorCuerpoCeleste {
         int opcion ;
         boolean salir = false ;
         
-        System.out.println("MENSAJE DE BIENVENIDA\n");
+        System.out.println("----------------------");
+        System.out.println("----¡BIENVENIDO/A!----");
+        System.out.println("----------------------\n");
         
         do 
         {
@@ -88,7 +90,7 @@ public class LanzadorCuerpoCeleste {
             
         } while (!salir);
         
-        System.out.println("\nMENSAJE DE DESPEDIDA");
+        System.out.println("\n --------- ¡GRACIAS POR UTILIZAR EL PROGRAMA! ----------");
     }
     
     
